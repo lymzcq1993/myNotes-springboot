@@ -16,9 +16,9 @@ public class RabbitMqWeb {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
-    @GetMapping("/rbmq")
-    public String sendDirectMessage(){
-        rabbitTemplate.convertAndSend("springDirectExchange","springTestKey","测试用的消息");
+    @GetMapping("/direct")
+    public String sendDirectMessage(String message){
+        rabbitTemplate.convertAndSend("springDirectExchange","springTestKey",message);
         return "OK";
     }
 }
