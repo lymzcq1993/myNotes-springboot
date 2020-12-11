@@ -1,8 +1,7 @@
 package com.hujian.rabbitmq.spring.consume;
 
-import com.hujian.rabbitmq.spring.config.RabbitMqConst;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.core.Message;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,10 +11,16 @@ import org.springframework.stereotype.Component;
  * @Date 2020/11/30 23:29
  */
 @Component
-@RabbitListener(queues = {RabbitMqConst.TOPIC_Q_HUJIAN,RabbitMqConst.TOPIC_Q_HUJIAN2})
-public class TopicConsumer {
-    @RabbitHandler
-    public void process(String messages){
+public class TopicConsumer  {
+    //@RabbitListener(queues = {RabbitMqConst.TOPIC_Q_HUJIAN2})
+    public void processHUJIAN2(String messages){
         System.out.println("消费了消息"+messages);
     }
+
+    //@RabbitListener(queues = {RabbitMqConst.TOPIC_Q_HUJIAN})
+    public void processHUJIAN(Message messages, Channel channle){
+        System.out.println("消费了消息"+messages.getBody());
+        System.out.println(channle);
+    }
+
 }

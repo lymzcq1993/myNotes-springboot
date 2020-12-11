@@ -1,6 +1,7 @@
 package com.hujian.rabbitmq.spring.config;
 
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2020/11/30 23:04
  */
 @Configuration
+@EnableRabbit
 public class RabbitMqConfig {
     /*************** direct模式  ****************************/
     @Bean
@@ -62,7 +64,7 @@ public class RabbitMqConfig {
 
     @Bean
     TopicExchange springTopicExchange(){
-        return new TopicExchange(RabbitMqConst.TOPIC_EX);
+        return ExchangeBuilder.topicExchange(RabbitMqConst.TOPIC_EX).durable(true).build();
     }
 
     @Bean
