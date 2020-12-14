@@ -18,7 +18,7 @@ public class RabbitMqConfig {
     /*************** direct模式  ****************************/
     @Bean
     Queue springDirectQueue(){
-        return new Queue(RabbitMqConst.DIRECT_Q_HUJIAN,false);
+        return new Queue(RabbitMqConst.DIRECT_Q_HUJIAN,true);
     }
 
     @Bean
@@ -36,6 +36,15 @@ public class RabbitMqConfig {
         return QueueBuilder.durable(RabbitMqConst.FANOUT_Q_HUJIAN).build();
     }
 
+    /**
+     * 这里设置了一个ttl队列
+     * @return
+     */
+    @Bean
+    Queue springFanoutTTLQueue(){
+        return QueueBuilder.durable(RabbitMqConst.FANOUT_Q_TTL).ttl(5000).build();
+    }
+
     @Bean
     Queue springFanoutQueue2(){
         return QueueBuilder.durable(RabbitMqConst.FANOUT_Q_HUJIAN2).build();
@@ -48,7 +57,14 @@ public class RabbitMqConfig {
 
     @Bean
     Binding bindFanout(@Qualifier("springFanoutQueue") Queue queue,@Qualifier("springFanoutExchange") FanoutExchange exchange){
-        return BindingBuilder.bind(queue).to(exchange);
+        Binding binder = BindingBuilder.bind(queue).to(exchange);
+        return binder;
+    }
+
+    @Bean
+    Binding bindFanoutTTL(@Qualifier("springFanoutTTLQueue") Queue queue,@Qualifier("springFanoutExchange") FanoutExchange exchange){
+        Binding binder = BindingBuilder.bind(queue).to(exchange);
+        return binder;
     }
 
     /*************** topic模式  ****************************/
@@ -75,6 +91,49 @@ public class RabbitMqConfig {
     @Bean
     Binding bindHujian2(@Qualifier("springTopicQueue2") Queue queue,@Qualifier("springTopicExchange") TopicExchange exchange){
         return BindingBuilder.bind(queue).to(exchange).with(RabbitMqConst.TOPIC_KEY_HUJIAN2);
+    }
+
+    /**********************测试死信  *************************/
+    @Bean
+    Queue springDLXNormalTopicQueue(){
+        return QueueBuilder.durable(RabbitMqConst.DLX_Q_NORMAL_HUJIAN)
+                .deadLetterExchange(RabbitMqConst.DLX_EX)
+                .deadLetterRoutingKey("dlx.hehe")
+                .ttl(10000)
+                .maxLength(10).build();
+    }
+
+    @Bean
+    TopicExchange springDLXNormalTopicExchange(){
+        return ExchangeBuilder.topicExchange(RabbitMqConst.DLX_EX_NORMAL).durable(true).build();
+    }
+
+    /**
+     * 死信队列
+     * @return
+     */
+    @Bean
+    Queue springDLXQueue(){
+        return QueueBuilder.durable(RabbitMqConst.DLX_Q_HUJIAN).build();
+    }
+
+    /**
+     * 死信交换机
+     * @return
+     */
+    @Bean
+    TopicExchange springDLXTopicExchange(){
+        return ExchangeBuilder.topicExchange(RabbitMqConst.DLX_EX).durable(true).build();
+    }
+
+    @Bean
+    Binding normalBind(@Qualifier("springDLXNormalTopicQueue") Queue queue,@Qualifier("springDLXNormalTopicExchange") TopicExchange exchange){
+        return BindingBuilder.bind(queue).to(exchange).with("dlx.normal.#");
+    }
+
+    @Bean
+    Binding dlxBind(@Qualifier("springDLXQueue") Queue queue,@Qualifier("springDLXTopicExchange") TopicExchange exchange){
+        return BindingBuilder.bind(queue).to(exchange).with("dlx.#");
     }
 
 }

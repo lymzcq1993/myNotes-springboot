@@ -13,6 +13,11 @@ spring:
     #虚拟host 可以不设置,使用server默认host
     virtual-host: /hujian
     listener:
-      direct:
+      simple:
         acknowledge-mode: manual
-        qu
+        prefetch: 1
+#      direct:
+#        prefetch: 1
+#        acknowledge-mode: auto
+    publisher-confirm-type: correlated
+    publisher-returns: true
