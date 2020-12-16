@@ -6,6 +6,7 @@
     <modules>
         <module>RabbitMq</module>
         <module>Redis</module>
+        <module>RocketMq</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

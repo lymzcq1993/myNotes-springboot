@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-/**
+/**死信接收5
  * @author hujian
  * @Classname DLXConsumer
  * @Date 2020/12/12 17:51

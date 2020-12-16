@@ -1,0 +1,9 @@
+
+#Namesrv地址
+rocketmq:
+  name-server: 192.168.5.100:9876;192.168.5.103:9876
+  producer:
+    group: SpringBootProGroup
+
+server:
+  port: 8080
