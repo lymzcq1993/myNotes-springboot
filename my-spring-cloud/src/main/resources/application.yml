@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.5.103:8848
+        namespace: e9b05a93-ae8e-47af-883f-b061d8c75861
+        group: order1
+        #cluster-name: WH
+        #metadata:
+          #version: v1
+  application:
+    name: product-center
+server:
+  port: 8083
