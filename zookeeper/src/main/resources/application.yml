@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    zookeeper:
+      connect-string: 127.0.0.1:2181
+      discovery:
+        #如果没有指定就会获取主机名
+        instance-host: 127.0.0.1
+  application:
+    name: my-zk
