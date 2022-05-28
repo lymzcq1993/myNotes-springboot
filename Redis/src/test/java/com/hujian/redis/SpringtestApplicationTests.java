@@ -2,7 +2,6 @@ package com.hujian.redis;
 
 import com.hujian.redis.entity.User;
 import org.junit.jupiter.api.Test;
-import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -18,8 +17,8 @@ class SpringtestApplicationTests {
 //    @Autowired
 //    private RedisTemplate redisTemplate2;
 
-    @Autowired
-    private RedissonClient redisson2;
+//    @Autowired
+//    private RedissonClient redisson2;
 
     @Test
     void contextLoads() throws IOException {
@@ -36,7 +35,7 @@ class SpringtestApplicationTests {
 //        System.out.println(bloomFilter.contains("hujian"));
 //        System.out.println(bloomFilter.contains("jiangmeng"));
 //        bloomFilter.delete();
-        System.out.println("------------"+redisson2.getConfig().useSingleServer().getAddress());
+//        System.out.println("------------"+redisson2.getConfig().useSingleServer().getAddress());
 //        Config config = Config.fromYAML(SpringtestApplication.class.getClass().getResource("/redisson.yaml"));
 //        //config.useSingleServer().setAddress("redis://192.168.31.101:6090");
 //        RedissonClient redisson = Redisson.create(config);
