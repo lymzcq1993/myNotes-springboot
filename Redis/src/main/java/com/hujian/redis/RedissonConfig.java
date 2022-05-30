@@ -1,6 +1,6 @@
 package com.hujian.redis;
 
-import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
+//import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -28,7 +28,7 @@ public class RedissonConfig {
     }
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        String m = DigestAuthenticationProvider.generateDigest("super:hujian");
-        System.out.println(m);
+//        String m = DigestAuthenticationProvider.generateDigest("super:hujian");
+//        System.out.println(m);
     }
 }
