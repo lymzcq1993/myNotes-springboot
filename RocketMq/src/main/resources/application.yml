@@ -1,9 +1,17 @@
-
 #Namesrv地址
 rocketmq:
-  name-server: 192.168.5.100:9876;192.168.5.103:9876
+  name-server: 192.168.8.88:9876
+  #配置生产者组
   producer:
-    group: SpringBootProGroup
+    group: producerGroup
+  #开启消息追踪
+  consumer:
+    enable-msg-trace: true
+    customized-trace-topic: "hujian-test-topic"
+  #pull模式下需要配置消费者组
+#  consumer:
+#    group: consumeGroup
+#    topic: springSimpleTopic
 
 server:
   port: 8080
