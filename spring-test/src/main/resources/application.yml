@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: test
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://192.168.8.88:3306/hujian?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
