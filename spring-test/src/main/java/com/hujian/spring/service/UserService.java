@@ -1,10 +1,6 @@
 package com.hujian.spring.service;
 
 import lombok.Data;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-public class UserService implements BeanDefinitionRegistryPostProcessor {
+public class UserService {
     private String name;
     private String hobby;
     public UserService(String name){
@@ -30,17 +26,7 @@ public class UserService implements BeanDefinitionRegistryPostProcessor {
       this.name = "hujian";
     };
     public void test(){
-        System.out.println(name);
+        System.out.println(this);
     }
 
-
-    @Override
-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-
-    }
-
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-
-    }
 }

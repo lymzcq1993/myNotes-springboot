@@ -1,5 +1,9 @@
 spring:
+  profiles:
+    active: dev
   cloud:
+    #dataid = ${prefix}-${spring.profiles.active}.${file-extension}
+    #所以此处为 product-center-dev.properties
     nacos:
       discovery:
         server-addr: 192.168.5.103:8848
@@ -8,6 +12,10 @@ spring:
         #cluster-name: WH
         #metadata:
           #version: v1
+      config:
+        server-addr: 192.168.5.103:8848
+        #只支持yaml和properties
+        file-extension: yaml
   application:
     name: product-center
 server:

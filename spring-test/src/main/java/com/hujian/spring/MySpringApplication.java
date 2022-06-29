@@ -1,22 +1,35 @@
 package com.hujian.spring;
 
-import com.hujian.spring.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
+//@AutoConfigureOrder(-212121)
+//@ConditionalOnClass(name = {"com.hujian.spring.SpringAppConfig"})
+//@Configuration(proxyBeanMethods = false)
 //@ComponentScan
+//@MapperScan
+//@EnableAutoConfiguration
 //@Configuration
-public class MySpringApplication {
+public class MySpringApplication extends SpringBootServletInitializer
+{
 //    @Bean
+//    @ConditionalOnMissingBean
 //    public UserService userService(){
-//        UserService service = new UserService();
-//        service.setName("second hujian");
-//        return service;
+//        return  new UserService();
 //    }
 
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(MySpringApplication.class);
+    }
+
     public static void main(String[] args) {
+//        List<String> list = new ArrayList<>()
         ConfigurableApplicationContext context = SpringApplication.run(MySpringApplication.class, args);
 //        AnnotationConfigApplicationContext context  = new AnnotationConfigApplicationContext(MySpringApplication.class);
 //        AnnotationConfigApplicationContext context =new AnnotationConfigApplicationContext();
@@ -25,8 +38,8 @@ public class MySpringApplication {
 //        context.addBeanFactoryPostProcessor(new UserService());
 //        context.refresh();
 //        context.refresh();
-        UserService service = context.getBean("userService", UserService.class);
-        service.test();
+//        UserService service = context.getBean("userService", UserService.class);
+//        service.test();
 
     }
 
