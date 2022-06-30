@@ -8,6 +8,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -22,6 +23,15 @@ import java.util.List;
 public class TestController {
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @RequestMapping("getOrderById")
+    public String getOrderById(String orderId){
+        String url = "http://order-service/order/findOrderById/"+orderId;
+        return restTemplate.getForObject(url,String.class);
+    }
 
     /**
      * 获取配置中心的属性
