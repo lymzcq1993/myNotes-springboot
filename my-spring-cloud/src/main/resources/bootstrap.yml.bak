@@ -1,0 +1,14 @@
+spring:
+    application:
+        name: product-center
+    cloud:
+        nacos:
+            config:
+                file-extension: yaml
+                namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
+                server-addr: 192.168.8.88:8848
+            discovery:
+                namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
+                server-addr: 192.168.8.88:8848
+    profiles:
+        active: dev

@@ -27,17 +27,18 @@ public class TestController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping("getOrderById")
-    public String getOrderById(String orderId){
-        String url = "http://order-service/order/findOrderById/"+orderId;
-        return restTemplate.getForObject(url,String.class);
-    }
-
     /**
      * 获取配置中心的属性
      */
-    @Value("${useLocalCache:false}")
-    private boolean useLocalCache;
+    @Value("${my.hobby}")
+    private String hobby;
+
+    @RequestMapping("getOrderById")
+    public String getOrderById(){
+        String url = "http://product-center/order/getProductList";
+        return restTemplate.getForObject(url,String.class);
+    }
+
 
     @GetMapping("/getServerList")
     public List<ServiceInstance> getServerList(){
@@ -45,8 +46,14 @@ public class TestController {
         return instances;
     }
 
+    @GetMapping("/getConfig")
+    public String getConfig(){
+        return hobby;
+    }
+
     @GetMapping("/getProductList")
     public List<ServiceInstance> getProductList(){
+        System.out.println(888888);
         List<ServiceInstance> instances = discoveryClient.getInstances("product-center");
         return instances;
     }

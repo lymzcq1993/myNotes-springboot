@@ -20,8 +20,5 @@ spring:
         namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
   application:
     name: product-center
-  config:
-    # 因为springboot 2.4版本以后默认关闭加载bootstrap.yml，所以只能通过此方式连接到nacos config
-    import: nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 #server:
 #  port: 8083
