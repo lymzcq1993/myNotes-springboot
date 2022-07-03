@@ -26,10 +26,10 @@
         </dependency>
 
 <!--        spring cloud用于代替ribbon的组件-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
 <!--使用原先优先加载bootstrap.yml的方式-->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->

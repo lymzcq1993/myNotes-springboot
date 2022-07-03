@@ -14,7 +14,6 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-//@LoadBalancerClient(name = "product-center",configuration = MyLoadBalancerConfig.class)
 public class SpringStart {
     /**
      * 负载的关键注解LoadBalanced，引入spring-cloud-starter-alibaba-nacos-discovery的时候已经带了spring-cloud-commons
@@ -22,12 +21,6 @@ public class SpringStart {
     @Bean
     @LoadBalanced
     RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
-
-    @Bean
-    @LoadBalanced
-    RestTemplate restTemplate2(){
         return new RestTemplate();
     }
 

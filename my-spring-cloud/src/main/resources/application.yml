@@ -1,27 +1,30 @@
 spring:
   profiles:
     active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   cloud:
     #dataid = ${prefix}-${spring.profiles.active}.${file-extension}
     #所以此处为 product-center-dev.properties
     nacos:
       discovery:
-        server-addr: 192.168.8.88:8848
+        server-addr: localhost:8848
         #命名空间，需要创建，默认可为public   namespace id为空
-        namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
+#        namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
 #        group: order1
         #cluster-name: WH
         #metadata:
           #version: v1
-      config:
-        server-addr: 192.168.8.88:8848
-        #只支持yaml和properties
-        file-extension: yaml
-        namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
+#      config:
+#        server-addr: localhost:8848
+#        #只支持yaml和properties
+#        file-extension: yaml
+#        namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
   application:
     name: product-center
-  config:
-    # 因为springboot 2.4版本以后默认关闭加载bootstrap.yml，所以只能通过此方式连接到nacos config
-    import: nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#  config:
+#    # 因为springboot 2.4版本以后默认关闭加载bootstrap.yml，所以只能通过此方式连接到nacos config
+#    import: nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 #server:
 #  port: 8083

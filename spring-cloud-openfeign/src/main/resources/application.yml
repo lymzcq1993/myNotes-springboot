@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: remoteService
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cloud:
+    #dataid = ${prefix}-${spring.profiles.active}.${file-extension}
+    #所以此处为 product-center-dev.properties
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+logging:
+  level:
+    com.hujian.feign: debug
+#server:
+#  port: 8083
+feign:
+  client:
+    config:
+      testService:
+        loggerLevel: FULL
+      product-center:
+        loggerLevel: FULL
+server:
+  port: 8079
