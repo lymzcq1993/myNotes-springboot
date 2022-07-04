@@ -20,7 +20,35 @@ feign:
     config:
       testService:
         loggerLevel: FULL
+        #拦截器yml中的配置
+#        requestInterceptors[0]:
+#          com.hujian.feign.interceptor.MyFeignInterceptor
+        #连接超时，默认10s
+        connectTimeout: 5000
+        #读取超时，默认60s
+        readTimeout: 10000
+        #配置解码器
+#        encoder: feign.jackson.JacksonEncoder
+#        decoder: feign.jackson.JacksonDecoder
       product-center:
         loggerLevel: FULL
+#  compression:
+#    request:
+#      enabled: true
+#      #压缩类型
+#      mime-types: text/xml,application/xml,application/json
+#      #最小压缩值
+#      min-request-size: 2048
+#    response:
+#      enabled: true
+    #开启okhttp方式覆盖原有方式
+#  okhttp:
+#    enabled: true
+#  httpclient:
+#    #引入包后默认开启
+#    enabled: true
+#    #开启hc5
+#    hc5:
+#      enabled: true
 server:
   port: 8079
