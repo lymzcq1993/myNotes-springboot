@@ -32,6 +32,26 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+
+
+        <!--  使用httpclient的方式请求，引入包后默认使用      -->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign</groupId>-->
+<!--            <artifactId>feign-httpclient</artifactId>-->
+<!--        </dependency>-->
+
+        <!--需要在yml中开启        -->
+<!--        <dependency>-->
+<!--             <groupId>io.github.openfeign</groupId>-->
+<!--             <artifactId>feign-okhttp</artifactId>-->
+<!--        </dependency>-->
+
+
+<!--     新加的hc5请求方式,，同样需要在yml中配置开启   -->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign</groupId>-->
+<!--            <artifactId>feign-hc5</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>
