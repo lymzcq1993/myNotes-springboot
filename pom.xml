@@ -12,6 +12,7 @@
         <module>kafka</module>
         <module>spring-test</module>
         <module>spring-cloud-openfeign</module>
+        <module>spring-cloud-gateway</module>
     </modules>
     <parent>
 <!--     spring-cloud  spring-cloud-alibaba组件和spring-boot版本对应关系   -->

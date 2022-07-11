@@ -23,6 +23,12 @@ public class MySpringApplication extends SpringBootServletInitializer
 //    }
 
 
+
+    /**
+     * 用于jar包启动
+     * @param builder
+     * @return
+     */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(MySpringApplication.class);

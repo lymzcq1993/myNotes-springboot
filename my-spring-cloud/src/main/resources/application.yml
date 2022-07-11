@@ -1,6 +1,7 @@
 spring:
-  profiles:
-    active: dev
+  #配置中心滚环境隔离
+#  profiles:
+#    active: dev
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -13,7 +14,7 @@ spring:
         #命名空间，需要创建，默认可为public   namespace id为空
 #        namespace: 8cb4a832-1d3f-4cc8-ac52-e0d611a2b9ca
 #        group: order1
-        #cluster-name: WH
+#        cluster-name: WH
         #metadata:
           #version: v1
 #      config:

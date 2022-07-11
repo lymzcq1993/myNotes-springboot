@@ -1,0 +1,62 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      globalcors:
+        cors-configurations:
+          #路径映射
+          '[/**]':
+            #允许的来源
+            allowedOrigins: "*"
+            #允许的请求方法，现在一般是要禁止除了POST和GET之外的方法
+            allowedMethods:
+              - GET
+              - POST
+      routes:
+        - id: product-center
+          #负载均衡的服务名
+          uri: lb://product-center
+#          uri: http://localhost:8081
+          #断言
+          filters:
+#            #添加请求头
+#            - AddRequestHeader=auth, hujian
+#            # 添加请求参数
+#            - AddRequestParameter=test, 2b
+#            # 添加前缀 对应微服务需要配置context-path，主要是用于可能部署的服务有额外的前缀
+#            - PrefixPath=/hjService
+#            #重定向到baidu
+#            - RedirectTo=302, https://www.baidu.com/
+             #自定义过滤器
+#             - MyFilter=hujian,我的过滤器
+          predicates:
+#            #使用自定义值来判断，未使用快捷配置
+#            - name: CheckName
+#              args:
+#                name: hujian
+#            #自定义属性的快捷配置，需要实现shortcutFieldOrder()方法
+#            - CheckName=hujian
+            #根据header的值匹配，支持正则
+#            - Header=auth,hujian
+            #判断请求的cookie中是否有指定的属性名
+#            - Cookie=username, hujian
+            #匹配在指定的日期时间之后发生的请求  入参是ZonedDateTime类型
+#            - After=2022-07-09T00:00:00.783+08:00[Asia/Shanghai]
+            #路径断言
+            - Path=/order/**
+    #      discovery:
+        #这里enabled默认为false，设置为true 网关会自动根据传输的服务名到注册中心去匹配
+        #官方不推荐这种方式
+#        locator:
+#          enabled: true
+  application:
+    name: my-gateway
+#  main:
+#    web-application-type: reactive
+server:
+  port: 7000
