@@ -13,6 +13,7 @@
         <module>spring-test</module>
         <module>spring-cloud-openfeign</module>
         <module>spring-cloud-gateway</module>
+        <module>spring-security-oauth2</module>
     </modules>
     <parent>
 <!--     spring-cloud  spring-cloud-alibaba组件和spring-boot版本对应关系   -->
@@ -79,6 +80,13 @@
                 <artifactId>zookeeper</artifactId>
                 <version>3.8.0</version>
             </dependency>
+
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>3.0.3</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -131,12 +139,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.75</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
         </dependency>
     </dependencies>
 
