@@ -34,7 +34,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .redirectUris("http://www.baidu.com")
                 //配置申请的权限范围
                 .scopes("all")
-                //配置grant_type，表示授权类型
-                .authorizedGrantTypes("authorization_code");
+                //简化收授权模式
+                .authorizedGrantTypes("implicit");
+                //授权模式
+//                .authorizedGrantTypes("authorization_code");
     }
 }
